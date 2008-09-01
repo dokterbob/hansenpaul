@@ -1,16 +1,1 @@
-<html>
-<head>
-    <title>Test</title>
-</head>
-<body>
-    <h1>Test</h1>
-    {% if object_list %}Kaas{% endif %}
-    <table>
-    {% for video in video_list %}
-    <tr>
-        <td>{{ video }}</td>
-    </tr>
-    {% endfor %}
-    </table>
-</body>
-</html>
+{% extends "tube/base.html" %}

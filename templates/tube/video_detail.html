@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block "content" %}
+        <h3>{{ video.title }}</h3>
         <div id="video">{{ video.get_embed_video_object|safe }}</div>
         
         <div id="comments">
@@ -12,8 +13,8 @@
         
             {% for comment in comment_list %}
                 <div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
-                    <p><b>{% if comment.user_url %}<a href="{{ comment.user_url }}">{% endif %}{{ comment.user_name }}{% if comment.user_url %}</a>{% endif %}</b> reageerde, op {{ comment.submit_date|date:"j F Y" }} om {{ comment.submit_date|date:"P" }}:</p>
-                    {{ comment.comment|urlizetrunc:40|linebreaks }}
+                    <p><b>{% if comment.user_url %}<a href="{{ comment.user_url }}">{% endif %}{{ comment.user_name }}{% if comment.user_url %}</a>{% endif %}</b> reageerde, op {{ comment.submit_date|date:"j F Y" }} om {{ comment.submit_date|date:"G:i" }} uur:</p>
+                    {{ comment.comment|linebreaks }}
                 </div>
             {% endfor %}
         {% else %}

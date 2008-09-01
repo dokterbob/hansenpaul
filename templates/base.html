@@ -20,6 +20,7 @@
     <div id="content">
         {% block "content" %}
         {% if category %}
+            <h3>Video's over {{ category }}</h3>
             <div id="video">{{ category.get_random_video.get_embed_video_object|safe }}</div>
         {% else %}
             Hans en Paul verjaardag blablabla.
@@ -32,7 +33,7 @@
             {% for video in video_list %}
             <tr>
                 <td><a href="{{ video.get_absolute_url }}"><img alt="{{ video.title }} voorbeeld" src="{{ video.get_thumbnail_url }}"/></a></td>
-                <td><a href="{{ video.get_absolute_url }}">{{ video.title }}</a>{% if not category %} over {{ video.category }}{% endif %}</td>
+                <td><a href="{{ video.get_absolute_url }}">{{ video.title }}</a>{% ifnotequal video.category.slug "allebei" %} over {{ video.category }}{% endifnotequal %}</td>
             </tr>
             {% endfor %}
         </table>

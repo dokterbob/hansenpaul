@@ -1,0 +1,40 @@
+{% extends "tube/video_detail.html" %}
+
+{% block "content" %}
+        <h3>{{ comment.content_object.title }}</h3>
+        <div id="video">{{ comment.content_object.get_embed_video_object|safe }}</div>
+        
+        <div id="comments">
+        {% load comments %}
+        
+        <h3>Controleer je reactie</h2>
+            <form action="{% comment_form_target %}" method="POST">
+              {% if form.errors %}
+                <h3>Er waren fout(en) in het door jou ingevulde formulier, pas ze hieronder aan.</h3>
+              {% else %}
+              <div class="comment_even">
+                  {{ comment|linebreaks }}
+              </div>                
+                <p>
+                  <input type="submit" name="submit" value="Bevestig je reactie" id="submit">
+                </p>
+              {% endif %}
+              <h3>Pas je reactie aan</h3>
+              {% for field in form %}
+                {% if field.is_hidden %}
+                  {{ field }}
+                {% else %}
+                  <p
+                    {% if field.errors %} class="error"{% endif %}
+                    {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+                    {% if field.errors %}{{ field.errors }}{% endif %}
+                    {{ field.label_tag }} {{ field }}
+                  </p>
+                {% endif %}
+              {% endfor %}
+              <p class="submit">
+                <input type="submit" name="submit" class="submit-post" value="Post">
+                <input type="submit" name="submit" class="submit-preview" value="Preview">
+              </p>
+            </form>
+{% endblock %}

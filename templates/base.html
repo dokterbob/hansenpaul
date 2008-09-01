@@ -6,11 +6,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feeds/rss/" />
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feeds/atom/" />
-    <title>Hans en Paul: 120 jaar</title>	
+    <title>{% block "title" %}Hans en Paul: 120 jaar{% endblock %}</title>	
 </head>
 
 <body>
-    <div id="title">Hans en Paul: 120 jaar</div>
+    <div id="title">{% block "htmltitle" %}Hans en Paul: 120 jaar{% endblock %}</div>
     <div id="categories">
         <a href="/">Alles</a>&nbsp;|&nbsp;
         <a href="/hans/">Hans</a>&nbsp;|&nbsp;

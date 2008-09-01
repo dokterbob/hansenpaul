@@ -1,0 +1,31 @@
+{% extends "tube/video_detail.html" %}
+
+{% block "content" %}
+        <h3>{{ comment.content_object.title }}</h3>
+        <div id="video">{{ comment.content_object.get_embed_video_object|safe }}</div>
+        
+        <div id="comments">
+        {% load comments %}
+        
+        {% get_comment_list for comment.content_object as comment_list %}
+        <h3>Reacties</h3>
+        {% if comment_list %}
+        
+            {% for comment in comment_list %}
+                <div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+                    <p><b>{% if comment.user_url %}<a href="{{ comment.user_url }}">{% endif %}{{ comment.user_name }}{% if comment.user_url %}</a>{% endif %}</b> reageerde, op {{ comment.submit_date|date:"j F Y" }} om {{ comment.submit_date|date:"G:i" }} uur:</p>
+                    {{ comment.comment|linebreaks }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Er zijn nog geen reacties.</p>
+        {% endif %}
+        </div>
+        
+        <h3>Laat reactie achter</h2>
+        {% render_comment_form for comment.content_object %}
+        
+        <script type="text/javascript" charset="utf-8">
+            alert('Bedankt voor het achterlaten van een reactie!\n\nJe reactie is op de site geplaatst.');
+        </script>
+{% endblock %}

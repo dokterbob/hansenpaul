@@ -1,0 +1,41 @@
+/* Remove padding and margin */
+*  {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body
+    {
+    font: 62.5%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
+    background-color: #333333;
+    color: #000000;    
+    text-align:center;
+}
+
+#wrapper { 
+    width:980px; 
+    text-align:left;  
+    margin-left:auto; 
+    margin-right:auto; 
+    background-color: #FFFFFF;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+#title {
+    width: 600px;
+}
+#categories {
+    width: 200px;
+}
+#content {
+    width: 600px;
+}
+
+#videolinks {
+    width: 200px;
+}

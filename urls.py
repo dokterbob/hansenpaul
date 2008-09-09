@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 
-# Uncomment the next two lines to enable the admin:
+from django.conf import settings
+
 from django.contrib import admin
 admin.autodiscover()
 
@@ -12,6 +13,7 @@ feeds = {
 }
 
 urlpatterns = patterns('',
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.PROJECT_ROOT + '/static/' }),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     (r'^admin/(.*)', admin.site.root),

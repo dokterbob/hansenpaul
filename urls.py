@@ -21,5 +21,6 @@ urlpatterns = patterns('',
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     
     (r'^comments/', include('django.contrib.comments.urls')),
+    (r'^guestbook/', include('guestbook')),
     (r'^', include('tube.urls.videos')),
 )

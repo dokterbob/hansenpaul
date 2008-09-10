@@ -1,5 +1,5 @@
 /* Remove padding and margin */
-*  {
+/**  {
     margin: 0;
     padding: 0;
     border: 0;
@@ -39,3 +39,4 @@ body
 #videolinks {
     width: 200px;
 }
+*/

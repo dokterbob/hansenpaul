@@ -19,8 +19,7 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
-    
+    (r'^guestbook/', include('guestbook.urls')),    
     (r'^comments/', include('django.contrib.comments.urls')),
-    (r'^guestbook/', include('guestbook.urls')),
     (r'^', include('tube.urls.videos')),
 )

@@ -12,27 +12,16 @@
 
 <body>
     <div id="wrapper">
-        <div class="left">
-        <div id="title">{% block "htmltitle" %}Hans en Paul: 120 jaar{% if category %} - Video's over {{ category }}{% endif %}{% endblock %}</div>
-
-        <div id="content">
-            {% block "content" %}
-            {% if category %}
-                <div id="video">{{ category.get_random_video.get_embed_video_object|safe }}</div>
-            {% else %}
-                Hans en Paul verjaardag blablabla.
-            {% endif %}
-            {% endblock %}
-        </div>
-        </div>
         <div class="right">
         <div id="categories">
             <a href="/">Alles</a>&nbsp;|&nbsp;
             <a href="/hans/">Hans</a>&nbsp;|&nbsp;
             <a href="/paul/">Paul</a>&nbsp;|&nbsp;
-            <a href="/allebei/">Allebei</a>
+            <a href="/allebei/">Allebei</a>&nbsp;|&nbsp;
+            <a href="/guestbook/">Gastenboek</a>
         </div>
 
+        <hr/>
     
         <div id="videolist">
             {% block "videolist" %}
@@ -46,7 +35,22 @@
             </table>
             {% endblock %}
         </div>
+        </div>        
+
+        <div class="left">
+        <div id="title">{% block "htmltitle" %}Hans en Paul: 120 jaar{% if category %} - Video's over {{ category }}{% endif %}{% endblock %}</div>
+
+        <div id="content">
+            {% block "content" %}
+            {% if category %}
+                <div id="video">{{ category.get_random_video.get_embed_video_object|safe }}</div>
+            {% else %}
+                Hans en Paul verjaardag blablabla.
+            {% endif %}
+            {% endblock %}
         </div>
+        </div>
+
     </div>
 
 </body>

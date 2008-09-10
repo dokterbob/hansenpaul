@@ -5,14 +5,19 @@
 {% block "htmltitle" %}Hans en Paul: 120 jaar - Gastenboek{% endblock %}
 
 {% block "content" %}
-{% for entry in entry_list %}
-    <div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
-        <p><b>{% if entry.url %}<a href="{{ entry.url }}">{% endif %}{{ entry.name }}{% if entry.url %}</a>{% endif %}</b> reageerde, op {{ entry.submit_date|date:"j F Y" }} om {{ entry.submit_date|date:"G:i" }} uur:</p>
-        {{ entry.text|linebreaks }}
-    </div>
-{% endfor %}
-
+<h3>Controleer je reactie</h2>
 <form action="{% url guestbook-post %}" method="POST">
+    {% if form.errors %}
+      <h3>Er waren fout(en) in het door jou ingevulde formulier, pas ze hieronder aan.</h3>
+    {% else %}
+    <div class="comment_even">
+        {{ comment|linebreaks }}
+    </div>                
+      <p>
+        <input type="submit" name="submit" value="Bevestig je reactie" id="submit">
+      </p>
+    {% endif %}
+    <h3>Pas je reactie aan</h3>
     {% for field in form %}
       {% if field.is_hidden %}
         {{ field }}
@@ -26,8 +31,8 @@
       {% endif %}
     {% endfor %}
     <p class="submit">
-      <input type="submit" name="submit" class="submit-post" value="Post" />
-      <input type="submit" name="submit" class="submit-preview" value="Preview" />
+      <input type="submit" name="submit" class="submit-post" value="Post">
+      <input type="submit" name="submit" class="submit-preview" value="Preview">
     </p>
 </form>
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block "content" %}
+{% for entry in entry_list %}
+<h1>Gastenboek</h1>
+<div class="guestbook-entry">
+    <h3>Entry</h3>
+    {{ entry }}
+</div>
+{% endfor %}
+{% endblock %}

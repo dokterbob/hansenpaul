@@ -1,3 +1,6 @@
 [submodule "dependencies/django-guestbook"]
 	path = dependencies/django-guestbook
 	url = git@github.com:dokterbob/django-guestbook.git
+[submodule "dependencies/django-accesscontrol"]
+	path = dependencies/django-accesscontrol
+	url = git@github.com:dokterbob/django-accesscontrol.git

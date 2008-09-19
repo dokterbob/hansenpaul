@@ -1,0 +1,53 @@
+8
+
+dir
+16
+http://django-tube.googlecode.com/svn/trunk/tube/locale/pt_BR/LC_MESSAGES
+http://django-tube.googlecode.com/svn
+
+
+
+2008-03-10T20:13:18.592603Z
+5
+semente
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+b614a2cf-a547-0410-a6c4-83ff5a15d1dc
+
+django.po
+file
+
+
+
+
+2008-09-19T20:22:39.000000Z
+e194824356ea1c5dcb24792f22167c01
+2008-03-10T20:13:18.592603Z
+5
+semente
+
+django.mo
+file
+
+
+
+
+2008-09-19T20:22:39.000000Z
+ca1ba9bcbdc54d656707e0ab46afddab
+2008-03-10T20:13:18.592603Z
+5
+semente
+has-props
+

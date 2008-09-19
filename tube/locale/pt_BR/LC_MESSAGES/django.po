@@ -1,0 +1,172 @@
+# Português do Brasil translation of django-tube
+# Copyright (c) 2008 Guilherme Mesquita Gondim
+# This file is distributed under the same license as the django-tube package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: django-tube 0.1-pre\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-10 17:00-0300\n"
+"PO-Revision-Date: 2008-03-10 17:01-0300\n"
+"Last-Translator: Guilherme Mesquita Gondim <semente@taurinus.org>\n"
+"Language-Team: Português Brasil <django-l10n-portuguese@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: feeds.py:36
+msgid "Latest videos on site"
+msgstr "Últimos vídeos no site"
+
+#: feeds.py:43
+#, python-format
+msgid "%(title)s's videos"
+msgstr "%(title)s: Vídeos"
+
+#: feeds.py:76
+msgid "Latest video categories on site"
+msgstr "Últimas categorias de vídeos no site"
+
+#: feeds.py:83
+#, python-format
+msgid "%(title)s's video categories"
+msgstr "%(title)s: Categorias de Vídeos"
+
+#: feeds.py:117
+#, python-format
+msgid "%(title)s: videos tagged \"%(tag name)s\""
+msgstr "%(title)s: fotos com a tag \"%(tag name)s\""
+
+#: feeds.py:121
+#, python-format
+msgid "Latest videos for tag \"%(tag name)s\""
+msgstr "Últimos vídeos para a tag \"%(tag name)s\""
+
+#: feeds.py:159
+#, python-format
+msgid "%(title)s: videos of category \"%(category name)s\""
+msgstr "%(title)s: vídeos da categoria \"%(category name)s\""
+
+#: feeds.py:163
+#, python-format
+msgid "Latest videos for category \"%(category name)s\""
+msgstr "Últimos vídeos para a categoria \"%(category name)s\""
+
+#: feeds.py:188
+msgid "Latest comments on videos"
+msgstr "Últimos comentários nos vídeos"
+
+#: feeds.py:195
+#, python-format
+msgid "%(title)s's video comments"
+msgstr "%(title)s: comentários dos vídeos"
+
+#: models.py:49
+msgid "name"
+msgstr "nome"
+
+#: models.py:51 models.py:82
+msgid "slug"
+msgstr ""
+
+#: models.py:53
+msgid ""
+"Automatically built from the name. A slug is a short label generally used in "
+"URLs."
+msgstr ""
+"Construído automaticamente a partir do nome. Um slug é uma etiqueta curta "
+"geralmente utilizada em URLs."
+
+#: models.py:56 models.py:95
+msgid "description"
+msgstr "descrição"
+
+#: models.py:59 models.py:108
+msgid "category"
+msgstr "categoria"
+
+#: models.py:60
+msgid "categories"
+msgstr "categorias"
+
+#: models.py:75
+msgid "title"
+msgstr "título"
+
+#: models.py:77
+msgid "video URL"
+msgstr "URL do vídeo"
+
+#: models.py:78
+msgid ""
+"Put the URL of the YouTube video. Example: http://www.youtube.com/watch?"
+"v=wuzgCwKElm4"
+msgstr "Coloque a URL de um vídeo no YouTube. Exemplo: http://www.youtube.com/watch?v=wuzgCwKElm4"
+
+#: models.py:84
+msgid ""
+"Automatically built from the title. A slug is a short label generally used "
+"in URLs."
+msgstr ""
+"Construído automaticamente a partir do título. Um slug é uma etiqueta curta "
+"geralmente utilizada em URLs."
+
+#: models.py:87
+msgid "date recorded"
+msgstr "data da gravação"
+
+#: models.py:88
+msgid "time recorded"
+msgstr "horário da gravação"
+
+#: models.py:89
+msgid "place"
+msgstr "local"
+
+#: models.py:91
+msgid "cameraman"
+msgstr ""
+
+#: models.py:97
+msgid "date published"
+msgstr "data de publicação"
+
+#: models.py:99
+msgid "Videos in future dates are only published on correct date."
+msgstr "Vídeos com datas no futuro são publicadas somente na data certa."
+
+#: models.py:102
+msgid "published"
+msgstr "publicado"
+
+#: models.py:105
+msgid "publish on"
+msgstr "publicar em"
+
+#: models.py:107
+msgid "enable comments"
+msgstr "habilitar comentários"
+
+#: models.py:122
+msgid "video"
+msgstr "vídeo"
+
+#: models.py:123
+msgid "videos"
+msgstr "vídeos"
+
+#: models.py:134
+msgid "Video detail"
+msgstr "Detalhes do vídeo"
+
+#: models.py:137
+msgid "Status"
+msgstr ""
+
+#: models.py:138
+msgid "Discussion"
+msgstr "Discussão"
+
+#: models.py:139
+msgid "Advanced options"
+msgstr "Opções avançadas"

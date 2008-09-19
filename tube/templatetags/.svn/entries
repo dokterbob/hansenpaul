@@ -1,0 +1,54 @@
+8
+
+dir
+16
+http://django-tube.googlecode.com/svn/trunk/tube/templatetags
+http://django-tube.googlecode.com/svn
+
+
+
+2008-05-19T02:49:37.876820Z
+9
+semente
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+b614a2cf-a547-0410-a6c4-83ff5a15d1dc
+
+tube_tags.py
+file
+
+
+
+
+2008-09-19T20:22:39.000000Z
+fc167d7b8ff8e9149667abcf3d845bf1
+2008-05-19T02:49:37.876820Z
+9
+semente
+has-props
+
+__init__.py
+file
+
+
+
+
+2008-09-19T20:22:39.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-05-19T02:49:37.876820Z
+9
+semente
+has-props
+

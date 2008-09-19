@@ -12,45 +12,51 @@
 
 <body>
     <div id="wrapper">
-        <div class="right">
-        <div id="categories">
-            <a href="/">Alles</a>&nbsp;|&nbsp;
-            <a href="/hans/">Hans</a>&nbsp;|&nbsp;
-            <a href="/paul/">Paul</a>&nbsp;|&nbsp;
-            <a href="/allebei/">Allebei</a>&nbsp;|&nbsp;
-            <a href="/guestbook/">Gastenboek</a>
-        </div>
-
-        <hr/>
-    
-        <div id="videolist">
-            {% block "videolist" %}
-            <table id="videolist-table">
-                {% for video in video_list %}
-                <tr>
-                    <td><a href="{{ video.get_absolute_url }}"><img alt="{{ video.title }} voorbeeld" src="{{ video.get_thumbnail_url }}"/></a></td>
-                    <td><a href="{{ video.get_absolute_url }}">{{ video.title }}</a>{% ifnotequal video.category.slug "allebei" %} over {{ video.category }}{% endifnotequal %}</td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% endblock %}
-        </div>
-        </div>        
-
-        <div class="left">
+    </div>
+    <div class="left">
         <div id="title">{% block "htmltitle" %}Hans en Paul: 120 jaar{% if category %} - Video's over {{ category }}{% endif %}{% endblock %}</div>
-
         <div id="content">
             {% block "content" %}
             {% if category %}
                 <div id="video">{{ category.get_random_video.get_embed_video_object|safe }}</div>
+                <div id="next_prev">
+                    <p class="pijl" id="left_p"><a href="#"><img align="left" src="images/pijl_links.jpg" alt="links" />vorige</a></p>
+                    <p class="pijl" id="right_p"><a href="#"><img align="right" src="images/pijl_rechts.jpg" alt="links" />volgende</a></p>
+                    <br class="clear" />
+                </div>
             {% else %}
                 Hans en Paul verjaardag blablabla.
             {% endif %}
             {% endblock %}
         </div>
-        </div>
+    </div>
 
+    <div class="right">
+        <div id="categories">
+            <ul id="video_list">
+                <li><a id="alles" href="/">Alles</a></li>
+                <li><a id="hans" href="/hans/">Hans</a></li>
+                <li><a id="paul" href="/paul/">Paul</a></li>
+                <li><a id="gastenboek" href="/guestbook/">Gastenboek</a></li>
+                <br class="clear" />
+            </ul>
+        </div>
+        
+        <div id="videolist">
+            {% block "videolist" %}
+            <table cellspacing="4" id="videolist-table">
+                {% for video in video_list %}
+                <tr>
+                    <td><a href="{{ video.get_absolute_url }}"><img alt="{{ video.title }} voorbeeld" align="left" src="{{ video.get_thumbnail_url }}"/></a>
+                    <a class="text_link" href="{{ video.get_absolute_url }}">{{ video.title }}</a>{% ifnotequal video.category.slug "allebei" %} over {{ video.category }}{% endifnotequal %}<br/></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div id="sort">
+            	Sorteren op <a href="#">Datum</a> / <a href="#">Naam</a>
+            </div>
+            {% endblock %}
+        </div>
     </div>
 
 </body>

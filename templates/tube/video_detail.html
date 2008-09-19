@@ -3,6 +3,11 @@
 {% block "content" %}
         <h3>{{ video.title }}</h3>
         <div id="video">{{ video.get_embed_video_object|safe }}</div>
+        <div id="next_prev">
+            <p class="pijl" id="left_p"><a href="#"><img align="left" src="images/pijl_links.jpg" alt="links" />vorige</a></p>
+            <p class="pijl" id="right_p"><a href="#"><img align="right" src="images/pijl_rechts.jpg" alt="links" />volgende</a></p>
+            <br class="clear" />
+        </div>
         
         <div id="comments">
         {% block "comments" %}

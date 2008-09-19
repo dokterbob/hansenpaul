@@ -12,32 +12,52 @@
 
 <body>
     <div id="wrapper">
-    </div>
-    <div class="left">
-        <div id="title">{% block "htmltitle" %}Hans en Paul: 120 jaar{% if category %} - Video's over {{ category }}{% endif %}{% endblock %}</div>
-        <div id="content">
-            {% block "content" %}
-            {% if category %}
-                <div id="video">{{ category.get_random_video.get_embed_video_object|safe }}</div>
-                <div id="next_prev">
-                    <p class="pijl" id="left_p"><a href="#"><img align="left" src="images/pijl_links.jpg" alt="links" />vorige</a></p>
-                    <p class="pijl" id="right_p"><a href="#"><img align="right" src="images/pijl_rechts.jpg" alt="links" />volgende</a></p>
-                    <br class="clear" />
-                </div>
-            {% else %}
-                Hans en Paul verjaardag blablabla.
-            {% endif %}
-            {% endblock %}
+        <div class="left">
+            <div id="title">{% block "htmltitle" %}Hans en Paul: 120 jaar{% if category %} - Video's over {{ category }}{% endif %}{% endblock %}</div>
+            <div id="content">
+                {% block "content" %}
+                        <h3>{{ video.title }} over {{ video.category.name }}</h3>
+                        <div id="video">{{ video.get_embed_video_object|safe }}</div>
+                        <div id="next_prev">
+                            <p class="pijl" id="left_p"><a href="#"><img align="left" src="/static/images/pijl_links.jpg" alt="links" />vorige</a></p>
+                            <p class="pijl" id="right_p"><a href="#"><img align="right" src="/static/images/pijl_rechts.jpg" alt="links" />volgende</a></p>
+                            <br class="clear" />
+                        </div>
+
+                        <div id="comments">
+                        {% block "comments" %}
+                            {% load comments %}
+
+                            {% get_comment_list for video as comment_list %}
+                            <h3>Reacties</h3>
+                            {% if comment_list %}
+
+                                {% for comment in comment_list %}
+                                    <div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+                                        <p><b>{% if comment.user_url %}<a href="{{ comment.user_url }}">{% endif %}{{ comment.user_name }}{% if comment.user_url %}</a>{% endif %}</b> reageerde, op {{ comment.submit_date|date:"j F Y" }} om {{ comment.submit_date|date:"G:i" }} uur:</p>
+                                        {{ comment.comment|linebreaks }}
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p>Er zijn nog geen reacties.</p>
+                            {% endif %}
+
+                            <h3>Laat reactie achter</h2>
+                            {% render_comment_form for video %}
+                        {% endblock %}
+                        </div>
+                {% endblock %}
+            </div>
         </div>
     </div>
 
     <div class="right">
         <div id="categories">
             <ul id="video_list">
-                <li><a id="alles" href="/">Alles</a></li>
-                <li><a id="hans" href="/hans/">Hans</a></li>
-                <li><a id="paul" href="/paul/">Paul</a></li>
-                <li><a id="gastenboek" href="/guestbook/">Gastenboek</a></li>
+                <li{% if not category and video_list %} id="category-current"{% endif %}><a id="alles" href="/">Alles</a></li>
+                <li{% ifequal category.slug "hans" %} id="category-current"{% endifequal %}><a id="hans" href="/hans/">Hans</a></li>
+                <li{% ifequal category.slug "paul" %} id="category-current"{% endifequal %}><a id="paul" href="/paul/">Paul</a></li>
+                <li{% if not video_list %} id="category-current"{% endif %}><a id="gastenboek" href="/guestbook/">Gastenboek</a></li>
                 <br class="clear" />
             </ul>
         </div>
@@ -45,16 +65,23 @@
         <div id="videolist">
             {% block "videolist" %}
             <table cellspacing="4" id="videolist-table">
-                {% for video in video_list %}
+                
+                {% for lvideo in video_list %}
                 <tr>
-                    <td><a href="{{ video.get_absolute_url }}"><img alt="{{ video.title }} voorbeeld" align="left" src="{{ video.get_thumbnail_url }}"/></a>
-                    <a class="text_link" href="{{ video.get_absolute_url }}">{{ video.title }}</a>{% ifnotequal video.category.slug "allebei" %} over {{ video.category }}{% endifnotequal %}<br/></td>
+                    <td{% ifequal video lvideo %} id="video-current"{% endifequal %}>
+                        <a href="{{ lvideo.get_absolute_url }}"><img alt="{{ lvideo.title }} voorbeeld" align="left" src="{{ lvideo.get_thumbnail_url }}"/></a>
+                        <a class="text_link" href="{{ lvideo.get_absolute_url }}">{{ lvideo.title }}</a>{% ifnotequal lvideo.category.slug "allebei" %} over {{ lvideo.category }}{% endifnotequal %}<br/>
+                    </td>
                 </tr>
+                
                 {% endfor %}
+                
             </table>
+            <!-->
             <div id="sort">
             	Sorteren op <a href="#">Datum</a> / <a href="#">Naam</a>
             </div>
+            -->
             {% endblock %}
         </div>
     </div>

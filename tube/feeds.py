@@ -13,7 +13,7 @@
 #
 
 from django.conf import settings
-from django.contrib.comments.models import FreeComment
+#from django.contrib.comments.models import FreeComment
 from django.contrib.syndication.feeds import Feed
 from django.contrib.syndication.feeds import FeedDoesNotExist
 from django.utils.feedgenerator import Atom1Feed
@@ -184,36 +184,36 @@ class AtomVideosByCategoryFeed(RssVideosByCategoryFeed):
 
 
 
-class RssFreeCommentsFeed(Feed):
-    description = _('Latest comments on videos')
-    title_template = 'feeds/comments_title.html'
-    description_template = 'feeds/comments_description.html'
-
-    def title(self):
-        if not hasattr(self, '_site'):
-            self._site = Site.objects.get_current()
-        return _("%(title)s's video comments") % \
-               {'title': self._site.name}
-
-    def link(self):
-        return reverse('tube-category-list')
-
-    def item_pubdate(self, item):
-        return item.submit_date
-
-    def get_query_set(self):
-        get_list_function = FreeComment.objects.filter
-        kwargs = {
-            'is_public': True,
-            'site__pk': settings.SITE_ID,
-            'content_type__app_label__exact': 'tube',
-            'content_type__model__exact': 'video',
-        }
-        return get_list_function(**kwargs)
-
-    def items(self):
-        return self.get_query_set()[:30]
-
-class AtomFreeCommentsFeed(RssFreeCommentsFeed):
-    feed_type = Atom1Feed
-    subtitle = RssFreeCommentsFeed.description
+# class RssFreeCommentsFeed(Feed):
+#     description = _('Latest comments on videos')
+#     title_template = 'feeds/comments_title.html'
+#     description_template = 'feeds/comments_description.html'
+# 
+#     def title(self):
+#         if not hasattr(self, '_site'):
+#             self._site = Site.objects.get_current()
+#         return _("%(title)s's video comments") % \
+#                {'title': self._site.name}
+# 
+#     def link(self):
+#         return reverse('tube-category-list')
+# 
+#     def item_pubdate(self, item):
+#         return item.submit_date
+# 
+#     def get_query_set(self):
+#         get_list_function = FreeComment.objects.filter
+#         kwargs = {
+#             'is_public': True,
+#             'site__pk': settings.SITE_ID,
+#             'content_type__app_label__exact': 'tube',
+#             'content_type__model__exact': 'video',
+#         }
+#         return get_list_function(**kwargs)
+# 
+#     def items(self):
+#         return self.get_query_set()[:30]
+# 
+# class AtomFreeCommentsFeed(RssFreeCommentsFeed):
+#     feed_type = Atom1Feed
+#     subtitle = RssFreeCommentsFeed.description

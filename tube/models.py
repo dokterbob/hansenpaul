@@ -153,6 +153,8 @@ def video_pre_save(sender, instance, signal, *args, **kwargs):
     try:
         # update instance's pub_date if video was not published
         e = Video.objects.get(id=instance.id)
+        #e.get_video_id()
+        
         if not e.is_published:
             instance.pub_date = datetime.now()
     except Video.DoesNotExist:

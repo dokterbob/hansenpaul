@@ -19,6 +19,13 @@ from tube.models import Video, Category
 def video_detail(request, category=None, *args, **kwargs):
     if category:
         kwargs['queryset'] = kwargs['queryset'].filter(category__slug__exact=category)
+    if kwargs.has_key('queryset'):
+        extra_context = {'video_list':kwargs['queryset']}
+        if not kwargs.has_key('extra_context'):
+            kwargs['extra_context'] = extra_context
+        else:
+            kwargs['extra_context'].update(extra_context)
+        
     return object_detail(request, *args, **kwargs)
 
 def video_list(request, category=None, *args, **kwargs):
@@ -34,4 +41,12 @@ def video_list(request, category=None, *args, **kwargs):
             kwargs['extra_context']['category'] = category_object
         except KeyError:
             kwargs['extra_context'] = {'category': category_object}
+    
+    if kwargs.has_key('queryset'):
+        extra_context = {'video':kwargs['queryset'].order_by('?')[0]}
+        if not kwargs.has_key('extra_context'):
+            kwargs['extra_context'] = extra_context
+        else:
+            kwargs['extra_context'].update(extra_context)
+
     return object_list(request, *args, **kwargs)

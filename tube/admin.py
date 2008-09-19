@@ -47,11 +47,16 @@ class VideoAdmin(admin.ModelAdmin):
             'fields': ('pub_date',),
         })
     )
-    list_display = ('title', 'date_recorded', 'time_recorded', 'pub_date',
+    list_display = ('thumbnail', 'title', 'date_recorded', 'time_recorded', 'pub_date',
                     'place', 'category', 'is_published', 'enable_comments')
     list_filter = ('is_published', 'publish_on', 'enable_comments', 'category')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ['slug', 'place', 'title', 'description', 'cameraman']
+    
+    def thumbnail(self, myvideo):
+       return u'<img src="%s" alt="%s"/>' % (myvideo.get_thumbnail_url(), myvideo)
+    thumbnail.short_description = _('thumbnail')
+    thumbnail.allow_tags = True
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Video, VideoAdmin)

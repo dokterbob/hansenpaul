@@ -33,7 +33,7 @@ video_detail = url(
 )
 video_list = url(               # all videos + category list
     regex  = '^$',
-    view   = 'django.views.generic.list_detail.object_list',
+    view   = 'tube.views.video_list',
     kwargs = dict(video_info_dict, paginate_by=TUBE_NUM_LATEST,
                   extra_context={'category_list': Category.objects.all}),
     name   = 'tube-video-list'

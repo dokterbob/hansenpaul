@@ -93,16 +93,17 @@ class Video(models.Model):
     description = models.TextField(_('description'), blank=True)
     pub_date = models.DateTimeField(
         _('date published'),
-        default=datetime.now,
+        #default=datetime.now,
         help_text=_('Videos in future dates are only published on '
                     'correct date.'),
+        blank=True
     )
     is_published = models.BooleanField(_('published'), default=True)
     publish_on = models.ManyToManyField(
         Site,
         verbose_name=_('publish on'),
     )
-    enable_comments = models.BooleanField(_('enable comments'), default=True)
+    enable_comments = models.BooleanField(_('enable comments'), default=True, editable=False)
     category = models.ForeignKey(Category, verbose_name=_('category'))
 
     if HAS_TAG_SUPPORT:
@@ -150,13 +151,27 @@ class Video(models.Model):
 from django.db.models import signals
 
 def video_pre_save(sender, instance, signal, *args, **kwargs):
+    if not instance.pub_date:
+        import gdata.youtube
+        import gdata.youtube.service
+        yt_service = gdata.youtube.service.YouTubeService()
+
+        entry = yt_service.GetYouTubeVideoEntry(video_id=instance.get_video_id())
+
+        from dateutil.parser import parse
+    
+        instance.pub_date = parse(entry.published.text)
+    
+        print 'Resetting date for', instance
+    else:
+        print 'Instance date', instance.pub_date
+
     try:
         # update instance's pub_date if video was not published
         e = Video.objects.get(id=instance.id)
-        #e.get_video_id()
-        
+                
         if not e.is_published:
-            instance.pub_date = datetime.now()
+           instance.pub_date = datetime.now()
     except Video.DoesNotExist:
         pass
 

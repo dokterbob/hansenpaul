@@ -36,14 +36,13 @@ class VideoAdmin(admin.ModelAdmin):
             'fields': ('title', 'video_url', 'slug', 'category')
         }),
         (_('Video detail'), {
+            'classes': ('collapse',),
             'fields': ['date_recorded', 'time_recorded', 'place',
                        'description', 'cameraman'] + TAG_FIELD
         }),
         (_('Status'), {
+            'classes': ('collapse',),
             'fields': ('is_published', 'publish_on')
-        }),
-        (_('Discussion'), {
-            'fields': ('enable_comments',)
         }),
         (_('Advanced options'), {
             'classes': ('collapse',),

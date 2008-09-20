@@ -6,7 +6,7 @@
 
 {% block "content" %}
 {% for entry in entry_list %}
-    <div class="comment_{% cycle odd,even %}" id="c{{ comment.id }}">
+    <div class="comment_odd" id="c{{ comment.id }}">
         <p><b>{% if entry.url %}<a href="{{ entry.url }}">{% endif %}{{ entry.name }}{% if entry.url %}</a>{% endif %}</b> reageerde, op {{ entry.submit_date|date:"j F Y" }} om {{ entry.submit_date|date:"G:i" }} uur:</p>
         {{ entry.text|linebreaks }}
     </div>

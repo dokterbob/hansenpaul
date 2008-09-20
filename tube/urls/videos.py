@@ -42,7 +42,7 @@ video_list = url(               # all videos + category list
 video_category_list = url(      # only videos in ``category``
     regex  = '^(?P<category>[-\w]+)/$',
     view   = 'tube.views.video_list',
-    kwargs = dict(video_info_dict, paginate_by=TUBE_NUM_LATEST),
+    kwargs = video_info_dict #, paginate_by=TUBE_NUM_LATEST),
     name   = 'tube-video-category-list'
 )
 

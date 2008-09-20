@@ -47,8 +47,8 @@ div.left
 	width: 429px;
 }
 
-div#title { padding: 0 0 0 60px; font-weight: bold; font-size: 5px;}
-div#content { padding: 0 0 0 60px; text-align: justify; width: 266px; }
+div#title { padding: 0 0 0 60px; font-weight: bold; font-size: 12px;}
+div#content { padding: 0 0 0 60px; width: 266px; }
 div#video { margin: 0 0 0 -60px; }
 
 div#comments

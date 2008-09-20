@@ -13,16 +13,18 @@
 <body>
     <div id="wrapper">
         <div class="left">
-            <!--><div id="title">{% block "htmltitle" %}{{ video.title }} over {{ video.category.name }}{% endblock %}</div>-->
             <div id="content">
                 {% block "content" %}
                         <div id="video">{{ video.get_embed_video_object|safe }}</div>
                         {% if prev and next %}
                         <div id="next_prev">
-                            <p class="pijl" id="left_p"><a href="{{ prev.get_absolute_url }}"><img align="left" src="/static/images/pijl_links.jpg" alt="links" />vorige</a></p>
+                            <p class="pijl" id="left_p"><a href="{{ prev.get_absolute_url }}"><img align="left" src="/static/images/pijl_links.jpg" alt="links" />vorige</a></p>                            
                             <p class="pijl" id="right_p"><a href="{{ next.get_absolute_url }}"><img align="right" src="/static/images/pijl_rechts.jpg" alt="links" />volgende</a></p>
+                            <div id="title">{{video.title }} {{ video.category.name }}</div>
                             <br class="clear" />
                         </div>
+                        {% else %}
+                            <div id="title">{{video.title }} {{ video.category.name }}</div>
                         {% endif %}
 
                         <div id="comments">

@@ -29,6 +29,9 @@ def video_detail(request, category=None, *args, **kwargs):
         
         querylist = list(queryset)
         index = querylist.index(video)
+        
+        extra_context.update({'category':video.category})
+        
         try:
             extra_context.update({'next': querylist[index+1]})
         except IndexError:

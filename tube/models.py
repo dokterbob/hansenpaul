@@ -32,9 +32,9 @@ if HAS_TAG_SUPPORT:
     from tagging.fields import TagField
 
 EMBED_VIDEO_OBJECT = """<object width="425" height="355">
-    <param name="movie" value="http://www.youtube.com/v/%s&rel=0"></param>
+    <param name="movie" value="http://www.youtube.com/v/%s&rel=0&autoplay=1"></param>
     <param name="wmode" value="transparent"></param>
-    <embed src="http://www.youtube.com/v/%s&rel=0"
+    <embed src="http://www.youtube.com/v/%s&rel=0&autoplay=1"
            type="application/x-shockwave-flash" wmode="transparent"
            width="425" height="355"></embed>
 </object>

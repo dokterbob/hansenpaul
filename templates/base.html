@@ -33,7 +33,7 @@
 
                                 {% for comment in comment_list %}
                                     <div class="comment_odd" id="c{{ comment.id }}">
-                                        <b>{% if comment.user_url %}<a href="{{ comment.user_url }}">{% endif %}{{ comment.user_name }}{% if comment.user_url %}</a>{% endif %}</b> reageerde, op {{ comment.submit_date|date:"j F Y" }} om {{ comment.submit_date|date:"G:i" }} uur:<br/>
+                                        <p><b>{% if comment.user_url %}<a href="{{ comment.user_url }}">{% endif %}{{ comment.user_name }}{% if comment.user_url %}</a>{% endif %}</b> reageerde, op {{ comment.submit_date|date:"j F Y" }} om {{ comment.submit_date|date:"G:i" }} uur:<br/></p>
                                         {{ comment.comment|linebreaks }}
                                     </div>
                                 {% endfor %}
@@ -69,7 +69,7 @@
                         <tr>
                             <td{% ifequal video lvideo %} id="video-current"{% endifequal %}>
                                 <a href="{{ lvideo.get_absolute_url }}"><img alt="{{ lvideo.title }} voorbeeld" align="left" src="{{ lvideo.get_thumbnail_url }}"/></a>
-                                <a class="text_link" href="{{ lvideo.get_absolute_url }}">{{ lvideo.title }}</a>{% ifnotequal lvideo.category.slug "allebei" %} over {{ lvideo.category }}{% endifnotequal %}<br/>
+                                <a class="text_link" href="{{ lvideo.get_absolute_url }}">{{ lvideo.title }}</a>{% ifnotequal lvideo.category.slug "allebei" %} {{ lvideo.category }}{% endifnotequal %}<br/>
                             </td>
                         </tr>
                 

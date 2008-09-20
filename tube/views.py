@@ -24,7 +24,8 @@ def video_detail(request, category=None, *args, **kwargs):
     if kwargs.has_key('queryset'):
         queryset = kwargs['queryset']
         video = queryset.filter(**{kwargs['slug_field']: kwargs['slug']}).get()
-        extra_context = {'video' : video}
+        
+        #extra_context = {'video' : video}
         
         querylist = list(queryset)
         index = querylist.index(video)
@@ -92,6 +93,4 @@ def video_list(request, category=None, *args, **kwargs):
         else:
             kwargs['extra_context'].update(extra_context)
             
-        print 'list', extra_context
-
     return object_list(request, *args, **kwargs)

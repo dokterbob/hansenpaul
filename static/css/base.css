@@ -47,7 +47,7 @@ div.left
 	width: 429px;
 }
 
-div#title { padding: 0 0 0 60px; font-weight: bold; }
+div#title { padding: 0 0 0 60px; font-weight: bold; font-size: 5px;}
 div#content { padding: 0 0 0 60px; text-align: justify; width: 266px; }
 div#video { margin: 0 0 0 -60px; }
 
@@ -79,7 +79,7 @@ form label { margin: 0 0 5px 0; display: block; }
 form input { margin: 0 0 10px 0; }
 form textarea { margin: 0 0 10px 0; }
 
-div#categories { padding: 10px 0 0 0; }
+div#categories { padding: 57px 0 0 0; }
 
 ul#video_list { list-style-type: none; margin: 0; }
 ul#video_list li { float: left; }
@@ -126,7 +126,7 @@ div#scrollbar
 	overflow: scroll;
 	overflow-x:hidden;
 	width: 319px;
-	height: 321px;
+	height: 327px;
 }
 
 table#videolist-table { width: 302px; }

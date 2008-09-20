@@ -13,7 +13,7 @@
 <body>
     <div id="wrapper">
         <div class="left">
-            <div id="title">{% block "htmltitle" %}Hans en Paul: 120 jaar - {{ video.title }} over {{ video.category.name }}{% endblock %}</div>
+            <!--><div id="title">{% block "htmltitle" %}{{ video.title }} over {{ video.category.name }}{% endblock %}</div>-->
             <div id="content">
                 {% block "content" %}
                         <div id="video">{{ video.get_embed_video_object|safe }}</div>

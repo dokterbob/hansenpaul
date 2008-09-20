@@ -19,13 +19,41 @@ from tube.models import Video, Category
 def video_detail(request, category=None, *args, **kwargs):
     if category:
         kwargs['queryset'] = kwargs['queryset'].filter(category__slug__exact=category)
+        
+    
     if kwargs.has_key('queryset'):
-        extra_context = {'video_list':kwargs['queryset']}
+        queryset = kwargs['queryset']
+        video = queryset.filter(**{kwargs['slug_field']: kwargs['slug']}).get()
+        extra_context = {'video' : video}
+        
+        querylist = list(queryset)
+        index = querylist.index(video)
+        try:
+            extra_context.update({'next': querylist[index+1]})
+        except IndexError:
+            extra_context.update({'next': querylist[0]})
+            
+        try:
+            extra_context.update({'prev': querylist[index-1]})
+        except IndexError:
+            extra_context.update({'prev': querylist[-1]})
+        
         if not kwargs.has_key('extra_context'):
             kwargs['extra_context'] = extra_context
         else:
             kwargs['extra_context'].update(extra_context)
+
+        extra_context = {'video_list':queryset}
+            
+        if not kwargs.has_key('extra_context'):
+            kwargs['extra_context'] = extra_context
+        else:
+            kwargs['extra_context'].update(extra_context)
+    
+        print 'detail', extra_context
         
+
+
     return object_detail(request, *args, **kwargs)
 
 def video_list(request, category=None, *args, **kwargs):
@@ -43,10 +71,27 @@ def video_list(request, category=None, *args, **kwargs):
             kwargs['extra_context'] = {'category': category_object}
     
     if kwargs.has_key('queryset'):
-        extra_context = {'video':kwargs['queryset'].order_by('?')[0]}
+        queryset = kwargs['queryset']
+        video = queryset.order_by('?')[0]
+        extra_context = {'video' : video}
+        
+        querylist = list(queryset)
+        index = querylist.index(video)
+        try:
+            extra_context.update({'next': querylist[index+1]})
+        except IndexError:
+            extra_context.update({'next': querylist[0]})
+            
+        try:
+            extra_context.update({'prev': querylist[index-1]})
+        except IndexError:
+            extra_context.update({'prev': querylist[-1]})
+        
         if not kwargs.has_key('extra_context'):
             kwargs['extra_context'] = extra_context
         else:
             kwargs['extra_context'].update(extra_context)
+            
+        print 'list', extra_context
 
     return object_list(request, *args, **kwargs)

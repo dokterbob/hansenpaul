@@ -17,6 +17,9 @@ from django.utils.translation import ugettext_lazy as _
 from tube.models import Category, Video
 from tube.settings import HAS_TAG_SUPPORT
 
+from django.contrib.sites.models import Site
+
+
 if HAS_TAG_SUPPORT:
     TAG_FIELD = ['tags']
 else:
@@ -57,6 +60,13 @@ class VideoAdmin(admin.ModelAdmin):
        return u'<img src="%s" alt="%s"/>' % (myvideo.get_thumbnail_url(), myvideo)
     thumbnail.short_description = _('thumbnail')
     thumbnail.allow_tags = True
+    
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'publish_on': # Check if it's the one you want
+            kwargs.update({'initial': [Site.objects.get_current()]})
+         
+        return super(VideoAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Video, VideoAdmin)

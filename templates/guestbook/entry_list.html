@@ -13,9 +13,12 @@
     </div>
 {% endfor %}
 
-{% if page %}
+{% if page_obj.has_other_pages %}
 <div id="title">
-    Pagina's: 
+    Pagina's:&nbsp; 
+    {% if page_obj.has_previous %}
+        <a href="/guestbook/page{{ page_obj.previous_page_number }}/">&lt;</a>
+    {% endif %}
     {% for page_cur in page_range %}
         {% ifequal page_cur page %}
             <span id="page-current">{{ page_cur }}</span>
@@ -23,6 +26,10 @@
             <a href="/guestbook/page{{ page_cur }}/">{{ page_cur }}</a>
         {% endifequal %}
     {% endfor %}
+    {% if page_obj.has_next %}
+        <a href="/guestbook/page{{ page_obj.next_page_number }}/">&gt;</a>
+    {% endif %}
+
 </div>
 {% endif %}
 

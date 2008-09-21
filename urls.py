@@ -6,10 +6,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 from tube.feeds import *
+from django.contrib.comments.feeds import *
 
 feeds = {
-    'rss': RssVideosFeed,
-    'atom' : AtomVideosFeed
+    'videos': RssVideosFeed,
+    'comments' : LatestCommentFeed
 }
 
 from tube.sitemaps import *

@@ -174,5 +174,16 @@ def video_pre_save(sender, instance, signal, *args, **kwargs):
            instance.pub_date = datetime.now()
     except Video.DoesNotExist:
         pass
+        
+def video_post_save(sender, instance, signal, *args, **kwargs):
+    try:
+        from django.contrib.sitemaps import ping_google
+        ping_google()
+        print 'Google ping success.'
+    except Exception:
+        # Bare 'except' because we could get a variety
+        # of HTTP-related exceptions.
+        print 'Google ping failed.'
 
 signals.pre_save.connect(video_pre_save, sender=Video)
+signals.post_save.connect(video_post_save, sender=Video)

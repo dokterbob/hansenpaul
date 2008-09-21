@@ -133,6 +133,7 @@ table#videolist-table { width: 302px; }
 table#videolist-table img 
 { 
 	border-right: solid 1px #E2E2E2;
+	width: 87px;
 	height: 65px; 
 	margin: 1px 10px 1px 1px;
 	padding: 0 10px 0 0; 

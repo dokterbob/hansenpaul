@@ -16,7 +16,7 @@ from django.contrib.sitemaps import Sitemap
 from tube.models import Video
 
 class TubeSitemap(Sitemap):
-    changefreq = "never"
+    changefreq = "weekly"
     priority = 0.5
 
     def items(self):

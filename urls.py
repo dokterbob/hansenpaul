@@ -12,7 +12,13 @@ feeds = {
     'atom' : AtomVideosFeed
 }
 
+from tube.sitemaps import *
+sitemaps = {
+    'tube' : TubeSitemap
+}
+
 urlpatterns = patterns('',
+    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.PROJECT_ROOT + '/static/' }),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

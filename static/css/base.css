@@ -146,3 +146,5 @@ div#sort { color: #FFFFFF; padding: 10px 5px; }
 div#sort a { color: #FFFFFF; }
 
 #video-current, #video-current a.text_link { background-color: #DD0000; color: #FFFFFF; }
+
+#page-current { color: #DD0000; }

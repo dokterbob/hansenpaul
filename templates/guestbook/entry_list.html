@@ -5,6 +5,7 @@
 {% block "htmltitle" %}Hans en Paul: 120 jaar - Gastenboek{% endblock %}
 
 {% block "content" %}
+
 {% for entry in entry_list %}
     <div class="comment_odd" id="c{{ comment.id }}">
         <p><b>{% if entry.url %}<a href="{{ entry.url }}">{% endif %}{{ entry.name }}{% if entry.url %}</a>{% endif %}</b> reageerde, op {{ entry.submit_date|date:"j F Y" }} om {{ entry.submit_date|date:"G:i" }} uur:</p>
@@ -12,6 +13,21 @@
     </div>
 {% endfor %}
 
+{% if page %}
+<div id="title">
+    Pagina's: 
+    {% for page_cur in page_range %}
+        {% ifequal page_cur page %}
+            <span id="page-current">{{ page_cur }}</span>
+        {% else %}
+            <a href="/guestbook/page{{ page_cur }}/">{{ page_cur }}</a>
+        {% endifequal %}
+    {% endfor %}
+</div>
+{% endif %}
+
+<h3>Laat reactie achter</h2>
+    
 <form action="{% url guestbook-post %}" method="POST">
     {% for field in form %}
       {% if field.is_hidden %}

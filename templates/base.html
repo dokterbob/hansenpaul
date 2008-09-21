@@ -58,9 +58,9 @@
         <div class="right">
             <div id="categories">
                 <ul id="video_list">
-                    <li{% if not category and video_list %} id="category-current"{% endif %}><a id="alles" href="/">Alles</a></li>
-                    <li{% ifequal category.slug "hans" %} id="category-current"{% endifequal %}><a id="hans" href="/hans/">Hans</a></li>
-                    <li{% ifequal category.slug "paul" %} id="category-current"{% endifequal %}><a id="paul" href="/paul/">Paul</a></li>
+                    <li{% if not category and video_list %} id="category-current"{% endif %}><a id="alles" href="/">Alles{% if not category and video_list %} ({{ video_list|length }}){% endif %}</a></li>
+                    <li{% ifequal category.slug "hans" %} id="category-current"{% endifequal %}><a id="hans" href="/hans/">Hans{% ifequal category.slug "hans" %} ({{ video_list|length }}){% endifequal %}</a></li>
+                    <li{% ifequal category.slug "paul" %} id="category-current"{% endifequal %}><a id="paul" href="/paul/">Paul{% ifequal category.slug "paul" %} ({{ video_list|length }}){% endifequal %}</a></li>
                     <li{% if not video_list %} id="category-current"{% endif %}><a id="gastenboek" href="/guestbook/">Gastenboek</a></li>
                     <br class="clear" />
                 </ul>
